@@ -1,0 +1,27 @@
+div#output {
+    overflow:auto;
+    height: 80%;
+    width: 800px;
+
+    border: darkcyan;
+    border-width: 8px;
+    border-style: solid;
+    margin-top: 10px;
+
+    padding: 6px;
+
+    
+}
+
+p {
+    color: blue;
+}
+
+body {
+    background-color: #41B3A3;
+}
+
+card {
+    padding-top: 6px;
+    padding-right: 10px;
+}
