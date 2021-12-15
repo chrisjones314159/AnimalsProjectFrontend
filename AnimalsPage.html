@@ -15,16 +15,22 @@
 </head>
 
 <body>
+    <div id="header">
+        
+    </div>
     <main class="container">
+        
         <div class="row">
-            <div class="col-sm-9 col-md-3">
+            <div id="infoInsert" class="col-sm-9 col-md-3">
 
                 
 
-                    <h2>Create Animal</h2>
+                    <h2 id="left">Create Animal</h2>
                     <form id="animalForm">
                         <label class="form-label" for="animalName">Name:</label>
                         <input class="form-control" type="text" name="name" id="animalName">
+                        <label class="form-label" for="animalImage">Image Url:</label>
+                        <input class="form-control" type="text" name="image" id="animalImage">
                         <label class="form-label" for="animalAge">Age:</label>
                         <input class="form-control" type="number" min="1" name="age" id="animalAge">
                         <label class="form-label" for="animalColour">Colour:</label>
@@ -36,18 +42,20 @@
                           </select>
 
                         <div>
-                            <button class="btn btn-secondary" type="reset">Reset</button>
+                            <button id="buttonLeft" class="btn btn-secondary" type="reset">Reset</button>
                             <button class="btn btn-primary" type="submit">Submit</button>
                         </div>
                     </form>
 
 
-                    <h2>Update Animal</h2>
+                    <h2 id="left">Update Animal</h2>
                     <form id="animalFormUpdate">
                         <label class="form-label" for="animalId">ID of Animal to replace:</label>
                         <input class="form-control" type="number" name="animalId" id="animalId">
                         <label class="form-label" for="animalName">Name:</label>
                         <input class="form-control" type="text" name="name" id="animalName">
+                        <label class="form-label" for="animalImage">Image Url:</label>
+                        <input class="form-control" type="text" name="image" id="animalImage">
                         <label class="form-label" for="animalAge">Age:</label>
                         <input class="form-control" type="number" min="1" name="age" id="animalAge">
                         <label class="form-label" for="animalColour">Colour:</label>
@@ -59,26 +67,29 @@
                           </select>
 
                         <div>
-                            <button class="btn btn-secondary" type="reset">Reset</button>
-                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <button id="buttonLeft" class="btn btn-secondary" type="reset">Reset</button>
+                            <button  class="btn btn-primary" type="submit">Submit</button>
                         </div>
                     </form>
+
                 </section>
+                
             </div>
             <div class="col">
                 <section>
                     <form id="display">
-                        <label class="form-label" for="animalSearchName">Name:</label>
-                        <input class="form-control" type="text" name="searchName" id="searchName">
+                        <div class="form-group">
+                        <input class="form-control form-label" type="text" name="searchName" id="searchName" value="seach by name" onfocus="this.value=''">
 
                         <div>
                             <button class="btn btn-secondary" type="reset" id="resetDisplay" >Reset</button>
-                            <button class="btn btn-primary" type="button" id="findByNameButton" >Submit</button>
+                            <button class="btn btn-primary" type="submit" id="findByNameButton" >Submit</button>
                         </div>
+                    </div>
                     </form>
 
-                    <h2>Animals</h2>
-                    <div id="output" class="row row-cols-2 row-cols-md-2 g-2">
+                
+                    <div id="output" class="row row-cols-3 row-cols-md-3 g-2">
                     </div>
                 </section>
             </div>
