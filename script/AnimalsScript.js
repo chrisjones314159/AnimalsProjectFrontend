@@ -15,6 +15,7 @@ document.querySelector("#animalForm").addEventListener("submit", function(event)
 
     const data = {
         name: form.name.value,
+        imageUrl: form.image.value,
         age: form.age.value,
         colour: form.colour.value,
         cute: form.cute.value
@@ -26,6 +27,7 @@ document.querySelector("#animalForm").addEventListener("submit", function(event)
     axios
         .post("http://localhost:8080/create", data)
         .then(res => {
+            output.innerHTML = "";
             getAnimals();
             form.reset(); // resets the form
             form.name.focus(); // puts the cursor in the name field
@@ -45,6 +47,7 @@ document.querySelector("#animalFormUpdate").addEventListener("submit", function(
 
     const data = {
         name: form.name.value,
+        imageUrl: form.image.value,
         age: form.age.value,
         colour: form.colour.value,
         cute: form.cute.value
@@ -56,11 +59,12 @@ document.querySelector("#animalFormUpdate").addEventListener("submit", function(
     axios
         .put(`http://localhost:8080/replace/${form.animalId.value}`, data)
         .then(res => {
+            output.innerHTML = "";
             getAnimals();
             form.reset(); // resets the form
             form.animalId.focus(); // puts the cursor in the name field
             console.log(res);
-            location.reload();
+            // location.reload();
         })
         .catch(err => console.error(err));
 });
@@ -74,12 +78,13 @@ function resetDisplay() {
 }
 
 
-document.querySelector("button#findByNameButton").addEventListener("click", findByName);
+document.querySelector("form#display").addEventListener("submit", findByName);
 
 
 const form = this;
 
 function findByName() {
+    event.preventDefault();
     output.innerHTML = "";
     axios
         .get(`http://localhost:8080/getByName/${form.searchName.value}`)
@@ -110,6 +115,7 @@ function findByName() {
 
                 const animalName = document.createElement("h4");
                 animalName.innerText = animal.name;
+                animalName.style.textAlign = "center"
                 newAnimal.appendChild(animalName);
                 animalName.classList.add("card-text");
                 animals.appendChild(animalName);
@@ -139,6 +145,16 @@ function findByName() {
                 newAnimal.appendChild(animalIsCute);
                 animals.appendChild(animalIsCute);
 
+                const animalImage = document.createElement("img");
+                animalImage.style.width = "250px"
+                animalImage.style.height = "250px"
+                animalImage.classList.add("card-image-top");
+                animalImage.src = `${animal.imageUrl}`
+                animalImage.innerText = "hello";
+                animalBody.appendChild(animalImage);
+                newAnimal.appendChild(animalImage);
+                animals.appendChild(animalImage);
+
                 const animalId = document.createElement("p");
                 animalId.classList.add("card-text");
                 animalId.innerText = `ID : ${animal.id}`;
@@ -153,13 +169,18 @@ function findByName() {
                 animalDelete.addEventListener("click", () => {
                     axios
                         .delete(`http://localhost:8080/remove/${animal.id}`)
-                        .then(response => getAnimals(), location.reload())
+                        .then(response => {
+                            output.innerHTML = "";
+                            getAnimals();
+                        })
                         .catch(err => console.error(err))
                 });
 
 
 
+                
                 animalBody.appendChild(animalName);
+                animalBody.appendChild(animalImage);
                 animalBody.appendChild(animalAge);
                 animalBody.appendChild(animalColour);
                 animalBody.appendChild(animalIsCute);
@@ -227,6 +248,7 @@ function getAnimals() {
 
                 const animalName = document.createElement("h4");
                 animalName.innerText = animal.name;
+                animalName.style.textAlign = "center"
                 newAnimal.appendChild(animalName);
                 animalName.classList.add("card-text");
                 animals.appendChild(animalName);
@@ -236,6 +258,7 @@ function getAnimals() {
 
                 const animalAge = document.createElement("p");
                 animalAge.classList.add("card-text");
+                animalAge.classList.add("font-weight-bold");
                 animalAge.innerText = "Age: " + animal.age;
                 animalBody.appendChild(animalAge);
                 newAnimal.appendChild(animalAge);
@@ -262,21 +285,35 @@ function getAnimals() {
                 animalBody.appendChild(animalId);
                 newAnimal.appendChild(animalId);
                 animals.appendChild(animalId);
+
+                const animalImage = document.createElement("img");
+                animalImage.style.width = "250px"
+                animalImage.style.height = "250px"
+                animalImage.classList.add("card-image-top");
+                animalImage.src = `${animal.imageUrl}`
+                animalImage.innerText = "hello";
+                animalBody.appendChild(animalImage);
+                newAnimal.appendChild(animalImage);
+                animals.appendChild(animalImage);
                 
 
                 const animalDelete = document.createElement("button");
                 animalDelete.innerText = "DELETE";
-                animalDelete.classList.add("btn", "btn-danger");
+                animalDelete.classList.add("btn", "btn-danger", "delete");
                 animalDelete.addEventListener("click", () => {
                     axios
                         .delete(`http://localhost:8080/remove/${animal.id}`)
-                        .then(response => getAnimals(), location.reload())
+                        .then(response => {
+                            output.innerHTML = "";
+                            getAnimals();
+                        })
                         .catch(err => console.error(err))
                 });
 
 
 
                 animalBody.appendChild(animalName);
+                animalBody.appendChild(animalImage)
                 animalBody.appendChild(animalAge);
                 animalBody.appendChild(animalColour);
                 animalBody.appendChild(animalIsCute);
