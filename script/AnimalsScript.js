@@ -4,7 +4,7 @@ const output = document.querySelector("div#output");
 
 
 
-
+// Create event
 document.querySelector("#animalForm").addEventListener("submit", function(event) {
     event.preventDefault(); 
 
@@ -12,6 +12,7 @@ document.querySelector("#animalForm").addEventListener("submit", function(event)
 
     const form = this;
 
+    // Data that is passed to back-end to create new item in database
     const data = {
         name: form.name.value,
         imageUrl: form.image.value,
@@ -41,7 +42,7 @@ document.querySelector("#animalForm").addEventListener("submit", function(event)
 
 
 
-
+// Update event
 document.querySelector("#animalFormUpdate").addEventListener("submit", function(event) {
     event.preventDefault(); 
 
@@ -49,6 +50,7 @@ document.querySelector("#animalFormUpdate").addEventListener("submit", function(
 
     const form = this; 
 
+    // Data that is passed to back-end to update an existing item in database
     const data = {
         name: form.name.value,
         imageUrl: form.image.value,
@@ -78,7 +80,7 @@ document.querySelector("#animalFormUpdate").addEventListener("submit", function(
 
 
 
-
+// Resets the display once back-end has been changed
 document.querySelector("button#resetDisplay").addEventListener("click", resetDisplay);
 
 function resetDisplay() {
@@ -94,7 +96,7 @@ function resetDisplay() {
 
 
 
-
+// Find by name event
 document.querySelector("form#display").addEventListener("submit", findByName);
 
 const form = this;
@@ -232,7 +234,7 @@ function findByName() {
 
 
 
-
+// Displays all of the animals items in the ouptut div
 function getAnimals() {
     axios
         .get("http://localhost:8080/getAll")
