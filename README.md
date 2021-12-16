@@ -27,3 +27,23 @@ I used Git and GitBash for version control. Throughout the project I used the fe
 
 ![image](https://user-images.githubusercontent.com/93252880/146402186-ad875930-991e-4129-8840-967fd13f58dd.png)
 
+
+Databases: 
+
+For the testing database I used H2 and for the production database I used SQL. This was achieved by creating 2 application properties files: 1 for testing and the other for production.
+
+![image](https://user-images.githubusercontent.com/93252880/146402874-7f376051-b597-4f1e-8586-8b9cb57955b1.png)
+
+
+
+Testing: 
+
+I used MockMvc for the integration testing.
+
+
+![image](https://user-images.githubusercontent.com/93252880/146404007-3eee1c4d-a8a8-4447-a8ea-6baa43d11b4c.png)
+
+
+![image](https://user-images.githubusercontent.com/93252880/146404072-f72f0cbb-0879-4556-867d-5a5b74d480f1.png)
+
+
