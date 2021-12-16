@@ -1,23 +1,13 @@
 div#output {
     overflow: auto;
-    height: 700px;
+    height: 200%;
     width: 140%;
-    
-    
-
-    background-color: #4786aa;
-
-    border: #4786aa;
-    border-width: 8px;
-    border-style: solid;
-    border-radius: 10px;
 
     margin-top: 2%;
     margin-left: 10%;
 
     padding: 6px;
 
-    box-shadow: 3px 5px 4px black;
 }
 
 
@@ -43,11 +33,6 @@ body {
     background-color: #659dbd;
 }
 
-#Card {
-    padding-top: 6px;
-    padding-right: 10px;
-    box-shadow: 5px 10px 8px black;
-}
 
 #card-text {
     font-weight: bold;
@@ -69,7 +54,6 @@ input {
 button#resetDisplay {
     margin-left: 10%;
 }
-
 
 
 select {
