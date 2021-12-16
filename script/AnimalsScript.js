@@ -4,22 +4,21 @@ const output = document.querySelector("div#output");
 
 
 
-
+// Create event
 document.querySelector("#animalForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // disables page refreshing
+    event.preventDefault(); 
 
     console.log("THIS:", this);
 
-    const form = this; // purely to make it more obvious
+    const form = this;
 
-
+    // Data that is passed to back-end to create new item in database
     const data = {
         name: form.name.value,
         imageUrl: form.image.value,
         age: form.age.value,
         colour: form.colour.value,
         cute: form.cute.value
-    
     };
 
     console.log("DATA: ", data);
@@ -29,22 +28,29 @@ document.querySelector("#animalForm").addEventListener("submit", function(event)
         .then(res => {
             output.innerHTML = "";
             getAnimals();
-            form.reset(); // resets the form
-            form.name.focus(); // puts the cursor in the name field
+            form.reset();
+            form.name.focus(); 
             console.log(res);
         })
         .catch(err => console.error(err));
 });
 
 
+
+
+
+
+
+
+// Update event
 document.querySelector("#animalFormUpdate").addEventListener("submit", function(event) {
-    event.preventDefault(); // disables page refreshing
+    event.preventDefault(); 
 
     console.log("THIS:", this);
 
-    const form = this; // purely to make it more obvious
+    const form = this; 
 
-
+    // Data that is passed to back-end to update an existing item in database
     const data = {
         name: form.name.value,
         imageUrl: form.image.value,
@@ -61,15 +67,20 @@ document.querySelector("#animalFormUpdate").addEventListener("submit", function(
         .then(res => {
             output.innerHTML = "";
             getAnimals();
-            form.reset(); // resets the form
-            form.animalId.focus(); // puts the cursor in the name field
+            form.reset(); 
+            form.animalId.focus(); 
             console.log(res);
-            // location.reload();
         })
         .catch(err => console.error(err));
 });
 
 
+
+
+
+
+
+// Resets the display once back-end has been changed
 document.querySelector("button#resetDisplay").addEventListener("click", resetDisplay);
 
 function resetDisplay() {
@@ -78,8 +89,15 @@ function resetDisplay() {
 }
 
 
-document.querySelector("form#display").addEventListener("submit", findByName);
 
+
+
+
+
+
+
+// Find by name event
+document.querySelector("form#display").addEventListener("submit", findByName);
 
 const form = this;
 
@@ -101,18 +119,18 @@ function findByName() {
                 
 
                 const animalCard = document.createElement("div");
-                animalCard .classList.add("card");
+                animalCard.classList.add("card");
                 animalCol.appendChild(animalCard);
 
 
                 const newAnimal = document.createElement("div");
                 newAnimal.classList.add("card-body");
 
+
                 const animalBody = document.createElement("div");
                 animalBody.classList.add("card-body");
 
                 
-
                 const animalName = document.createElement("h4");
                 animalName.innerText = animal.name;
                 animalName.style.textAlign = "center"
@@ -121,14 +139,13 @@ function findByName() {
                 animals.appendChild(animalName);
 
 
-
-
                 const animalAge = document.createElement("p");
                 animalAge.classList.add("card-text");
                 animalAge.innerText = "Age: " + animal.age;
                 animalBody.appendChild(animalAge);
                 newAnimal.appendChild(animalAge);
                 animals.appendChild(animalAge);
+
 
                 const animalColour = document.createElement("p");
                 animalColour.classList.add("card-text");
@@ -145,6 +162,7 @@ function findByName() {
                 newAnimal.appendChild(animalIsCute);
                 animals.appendChild(animalIsCute);
 
+
                 const animalImage = document.createElement("img");
                 animalImage.style.width = "250px"
                 animalImage.style.height = "250px"
@@ -154,6 +172,7 @@ function findByName() {
                 animalBody.appendChild(animalImage);
                 newAnimal.appendChild(animalImage);
                 animals.appendChild(animalImage);
+
 
                 const animalId = document.createElement("p");
                 animalId.classList.add("card-text");
@@ -177,8 +196,6 @@ function findByName() {
                 });
 
 
-
-                
                 animalBody.appendChild(animalName);
                 animalBody.appendChild(animalImage);
                 animalBody.appendChild(animalAge);
@@ -217,14 +234,13 @@ function findByName() {
 
 
 
-
+// Displays all of the animals items in the ouptut div
 function getAnimals() {
     axios
         .get("http://localhost:8080/getAll")
         .then(res => {
             
             const animals = document.createElement("ul");
-
 
 
             for (let animal of res.data) {
@@ -241,19 +257,17 @@ function getAnimals() {
                 const newAnimal = document.createElement("div");
                 newAnimal.classList.add("card-body");
 
+                
                 const animalBody = document.createElement("div");
                 animalBody.classList.add("card-body");
 
                 
-
                 const animalName = document.createElement("h4");
                 animalName.innerText = animal.name;
                 animalName.style.textAlign = "center"
                 newAnimal.appendChild(animalName);
                 animalName.classList.add("card-text");
                 animals.appendChild(animalName);
-
-
 
 
                 const animalAge = document.createElement("p");
@@ -263,6 +277,7 @@ function getAnimals() {
                 animalBody.appendChild(animalAge);
                 newAnimal.appendChild(animalAge);
                 animals.appendChild(animalAge);
+
 
                 const animalColour = document.createElement("p");
                 animalColour.classList.add("card-text");
@@ -279,12 +294,14 @@ function getAnimals() {
                 newAnimal.appendChild(animalIsCute);
                 animals.appendChild(animalIsCute);
 
+
                 const animalId = document.createElement("p");
                 animalId.classList.add("card-text");
                 animalId.innerText = `ID : ${animal.id}`;
                 animalBody.appendChild(animalId);
                 newAnimal.appendChild(animalId);
                 animals.appendChild(animalId);
+
 
                 const animalImage = document.createElement("img");
                 animalImage.style.width = "250px"
@@ -311,7 +328,6 @@ function getAnimals() {
                 });
 
 
-
                 animalBody.appendChild(animalName);
                 animalBody.appendChild(animalImage)
                 animalBody.appendChild(animalAge);
@@ -326,10 +342,7 @@ function getAnimals() {
 
 
                 output.appendChild(animalCol);
-                animalCard.appendChild(newAnimal);
-                
-
-                
+                animalCard.appendChild(newAnimal);  
             }
 
             output.appendChild(animals);
