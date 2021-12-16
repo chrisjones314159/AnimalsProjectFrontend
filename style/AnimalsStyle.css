@@ -1,0 +1,72 @@
+div#output {
+    overflow: auto;
+    height: 200%;
+    width: 140%;
+
+    margin-top: 2%;
+    margin-left: 10%;
+
+    padding: 6px;
+
+}
+
+
+main.container {
+    margin-left: 0%;
+}
+
+input#searchName {
+    margin-top: 5%;
+}
+
+h2#left {
+    margin-top: 15px;;
+    margin-left: 10%;
+}
+
+button#buttonLeft {
+    margin-left: 10%;
+    
+}
+
+body {
+    background-color: #659dbd;
+}
+
+
+#card-text {
+    font-weight: bold;
+}
+
+button {
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    box-shadow: 2px 2px 2px black;
+}
+
+input {
+    box-shadow: 2px 2px 2px black;
+    margin-bottom: 4px;
+    margin-left: 10%;
+}
+
+button#resetDisplay {
+    margin-left: 10%;
+}
+
+
+select {
+    box-shadow: 2px 2px 2px black;
+    margin-bottom: 4px;
+    margin-left: 10%;
+}
+ p {
+     font-weight: bold;
+ }
+
+ label {
+     font-weight: bold;
+     margin-left: 10%;
+ }
+
