@@ -15,3 +15,12 @@ I created a Scrum board using Jira and populated it with epics and user stories.
 
 ![image](https://user-images.githubusercontent.com/93252880/146401336-59420922-4e93-46c1-8fa9-5807668055f1.png)
 
+![image](https://user-images.githubusercontent.com/93252880/146401558-94821e1d-57b1-4589-b25b-587cbf5f77ab.png)
+
+
+
+Version Control: 
+I used Git and GitBash for version control. Throughout the project I used the fearure branch model: creating a dev branch from main and then feature branches whenever working on a new aspect of the project.
+
+![image](https://user-images.githubusercontent.com/93252880/146402186-ad875930-991e-4129-8840-967fd13f58dd.png)
+
